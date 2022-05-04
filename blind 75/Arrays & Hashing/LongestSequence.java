@@ -1,6 +1,6 @@
 import java.util.PriorityQueue;
 
-class LongestSequence {
+public class LongestSequence {
     public static int longestConsecutive(int[] nums) {
         if (nums.length == 0)
             return 0;
@@ -19,13 +19,15 @@ class LongestSequence {
         while (pq.size() > 0) {
             int num = pq.poll();
 
-            if (num - 1 == prev)
+            if (num - 1 == prev) {
                 cur++;
-            else
-                cur = 0;
+                longest = (longest > cur) ? longest : cur;
+            } else {
+                if (longest > pq.size())
+                    return longest;
+                cur = 1;
+            }
             prev = num;
-
-            longest = (longest > cur) ? longest : cur;
         }
 
         return longest;
