@@ -1,7 +1,7 @@
 import java.util.PriorityQueue;
 
 class LongestSequence {
-    public int longestConsecutive(int[] nums) {
+    public static int longestConsecutive(int[] nums) {
         if (nums.length == 0)
             return 0;
 
@@ -29,5 +29,10 @@ class LongestSequence {
         }
 
         return longest;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6 };
+        System.out.println(longestConsecutive(arr));
     }
 }
