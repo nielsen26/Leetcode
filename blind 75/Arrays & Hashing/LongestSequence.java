@@ -69,7 +69,7 @@ public class LongestSequence {
         List<Integer> list = new ArrayList<>();
 
         for (int num : nums) {
-            if (!binaryFind(list, num))
+            if (!binarySearch(list, num))
                 binaryInsert(list, num);
         }
 
@@ -77,8 +77,8 @@ public class LongestSequence {
         int longest = 1;
         int cur = 1;
 
-        while (list.size() > 0) {
-            int num = list.remove(0);
+        for (int i = 0; i < list.size(); i++) {
+            int num = list.get(i);
 
             if (num - 1 == prev) {
                 cur++;
