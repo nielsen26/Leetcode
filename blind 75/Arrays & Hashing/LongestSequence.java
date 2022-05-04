@@ -1,29 +1,90 @@
-import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LongestSequence {
+    public static void binaryInsert(List<Integer> list, int val) {
+        if (list.size() == 0) {
+            list.add(val);
+            return;
+        }
+
+        int start = 0;
+        int end = list.size() - 1;
+
+        while (start < end) {
+            int mid = (start + end) / 2;
+            int cur = list.get(mid);
+
+            if (val < cur)
+                end = mid;
+            else {
+                if ((start + end) % 2 == 1)
+                    start = mid + 1;
+                else
+                    start = mid;
+            }
+        }
+
+        if (val < list.get(start))
+            list.add(start, val);
+        else
+            list.add(start + 1, val);
+    }
+
+    public static Boolean binarySearch(List<Integer> list, int val) {
+        if (list.size() == 0) {
+            return false;
+        }
+
+        int start = 0;
+        int end = list.size() - 1;
+
+        while (start < end) {
+            int mid = (start + end) / 2;
+            int cur = list.get(mid);
+
+            if (val == cur)
+                return true;
+
+            if (val < cur)
+                end = mid;
+            else {
+                if ((start + end) % 2 == 1)
+                    start = mid + 1;
+                else
+                    start = mid;
+            }
+        }
+
+        if (val == list.get(start))
+            return true;
+        else
+            return false;
+    }
+
     public static int longestConsecutive(int[] nums) {
         if (nums.length == 0)
             return 0;
 
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+        List<Integer> list = new ArrayList<>();
 
         for (int num : nums) {
-            if (!pq.contains(num))
-                pq.add(num);
+            if (!binaryFind(list, num))
+                binaryInsert(list, num);
         }
 
-        int prev = pq.poll();
+        int prev = list.remove(0);
         int longest = 1;
         int cur = 1;
 
-        while (pq.size() > 0) {
-            int num = pq.poll();
+        while (list.size() > 0) {
+            int num = list.remove(0);
 
             if (num - 1 == prev) {
                 cur++;
                 longest = (longest > cur) ? longest : cur;
             } else {
-                if (longest > pq.size())
+                if (longest > list.size())
                     return longest;
                 cur = 1;
             }
