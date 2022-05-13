@@ -1,54 +1,17 @@
 public class ContainerMostWater {
     public static int maxArea(int[] height) {
         int area = 0;
+        int start = 0;
+        int end = height.length - 1;
+        while (start < end) {
+            int lower = height[start] < height[end] ? height[start] : height[end];
+            int new_area = (end - start) * lower;
+            area = new_area > area ? new_area : area;
 
-        for (int i = 0; i < height.length; i++) {
-            int start = 0;
-            int end = height.length - 1;
-            boolean found = false;
-
-            if (start != i || end != i) {
-                while (i - start > end - i) {
-                    if (height[i] > height[start])
-                        start++;
-                    else {
-                        found = true;
-                        int new_area = (i - start) * height[i];
-                        area = new_area > area ? new_area : area;
-                        break;
-                    }
-                }
-
-                while (i - start < end - i) {
-                    if (height[i] > height[end])
-                        end--;
-                    else {
-                        found = true;
-                        int new_area = (end - i) * height[i];
-                        area = new_area > area ? new_area : area;
-                        break;
-                    }
-                }
-
-                if (!found) {
-                    while (start != i) {
-                        if (height[i] > height[start])
-                            start++;
-                        else {
-                            int new_area = (i - start) * height[i];
-                            area = new_area > area ? new_area : area;
-                            break;
-                        }
-                        if (height[i] > height[end])
-                            end--;
-                        else {
-                            int new_area = (end - i) * height[i];
-                            area = new_area > area ? new_area : area;
-                            break;
-                        }
-                    }
-                }
-            }
+            if (height[start] < height[end])
+                start++;
+            else
+                end--;
         }
 
         return area;
