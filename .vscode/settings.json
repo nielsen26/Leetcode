@@ -1,6 +1,8 @@
 {
     "java.project.sourcePaths": [
-        "blind 75/Arrays & Hashing",
-        "blind 75/Two Pointers"
+        "Neetcode",
+        "easy",
+        "hard",
+        "medium"
     ]
 }
