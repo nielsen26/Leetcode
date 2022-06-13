@@ -73,11 +73,11 @@ public class LongestSequence {
                 binaryInsert(list, num);
         }
 
-        int prev = list.remove(0);
+        int prev = list.get(0);
         int longest = 1;
         int cur = 1;
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 1; i < list.size(); i++) {
             int num = list.get(i);
 
             if (num - 1 == prev) {
