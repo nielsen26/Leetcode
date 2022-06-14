@@ -1,3 +1,5 @@
+package Two_Pointers;
+
 public class ContainerMostWater {
     public static int maxArea(int[] height) {
         int area = 0;

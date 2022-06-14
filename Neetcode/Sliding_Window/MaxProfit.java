@@ -1,3 +1,5 @@
+package Sliding_Window;
+
 public class MaxProfit {
     public int maxProfitMethod(int[] prices) {
         int profit = 0;
