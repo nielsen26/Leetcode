@@ -1,3 +1,5 @@
+package Arrays_Hashing;
+
 import java.util.HashSet;
 
 public class containsDuplicate {

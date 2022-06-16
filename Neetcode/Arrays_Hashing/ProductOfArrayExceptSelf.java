@@ -1,4 +1,6 @@
-public class productExceptSelf {
+package Arrays_Hashing;
+
+public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int total_prod = 1;
         int zero_num = 0;
