@@ -1,24 +1,16 @@
 package OneD_dynamic_programming;
 
 public class Climbing_Stairs {
-    private int[] arr;
-    private int top;
-
     public int climbStairs(int n) {
-        arr = new int[n];
-        top = n;
-        return climb(0);
-    }
+        int n1 = 0;
+        int n2 = 1;
 
-    private int climb(int cur) {
-        if (cur == top)
-            return 1;
-        else if (cur < top) {
-            if (arr[cur] == 0) {
-                arr[cur] = climb(cur + 1) + climb(cur + 2);
-            }
-            return arr[cur];
+        for (int i = 0; i < n; i++) {
+            int temp = n1;
+            n1 = n2;
+            n2 += temp;
         }
-        return 0;
+
+        return n2;
     }
 }
